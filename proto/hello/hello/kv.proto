@@ -1,0 +1,11 @@
+syntax = "proto3";
+package hello.hello;
+
+option go_package = "github.com/Murphy-hub/hello/x/hello/types";
+
+message Kv {
+  string index = 1; 
+  string value = 2; 
+  string creator = 3;
+}
+
