@@ -9,7 +9,7 @@ import (
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 	"github.com/spf13/cobra"
 
-	abci "github.com/cometbft/cometbft/abci/types"
+	abci "github.com/tendermint/tendermint/abci/types"
 
 	"github.com/Murphy-hub/hello/x/hello/client/cli"
 	"github.com/Murphy-hub/hello/x/hello/keeper"
@@ -108,6 +108,17 @@ func NewAppModule(
 		accountKeeper:  accountKeeper,
 		bankKeeper:     bankKeeper,
 	}
+}
+
+// Deprecated: use RegisterServices
+func (am AppModule) Route() sdk.Route { return sdk.Route{} }
+
+// Deprecated: use RegisterServices
+func (AppModule) QuerierRoute() string { return types.RouterKey }
+
+// Deprecated: use RegisterServices
+func (am AppModule) LegacyQuerierHandler(_ *codec.LegacyAmino) sdk.Querier {
+	return nil
 }
 
 // RegisterServices registers a gRPC query service to respond to the module-specific gRPC queries

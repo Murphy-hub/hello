@@ -1,16 +1,12 @@
 syntax = "proto3";
-
-package hello.hello;
+package murphyhub.hello.hello;
 
 import "gogoproto/gogo.proto";
 import "hello/hello/params.proto";
-import "hello/hello/kv.proto";
 
 option go_package = "github.com/Murphy-hub/hello/x/hello/types";
 
 // GenesisState defines the hello module's genesis state.
 message GenesisState {
-           Params params = 1 [(gogoproto.nullable) = false];
-  repeated Kv     kvList = 2 [(gogoproto.nullable) = false];
+  Params params = 1 [(gogoproto.nullable) = false];
 }
-

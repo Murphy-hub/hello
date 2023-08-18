@@ -1,5 +1,5 @@
 syntax = "proto3";
-package hello.hello;
+package murphyhub.hello.hello;
 
 import "gogoproto/gogo.proto";
 

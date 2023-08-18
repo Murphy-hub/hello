@@ -8,7 +8,7 @@ import (
 )
 
 func TestGenesisState_Validate(t *testing.T) {
-	tests := []struct {
+	for _, tc := range []struct {
 		desc     string
 		genState *types.GenesisState
 		valid    bool
@@ -19,38 +19,15 @@ func TestGenesisState_Validate(t *testing.T) {
 			valid:    true,
 		},
 		{
-			desc: "valid genesis state",
+			desc:     "valid genesis state",
 			genState: &types.GenesisState{
 
-				KvList: []types.Kv{
-					{
-						Index: "0",
-					},
-					{
-						Index: "1",
-					},
-				},
 				// this line is used by starport scaffolding # types/genesis/validField
 			},
 			valid: true,
 		},
-		{
-			desc: "duplicated kv",
-			genState: &types.GenesisState{
-				KvList: []types.Kv{
-					{
-						Index: "0",
-					},
-					{
-						Index: "0",
-					},
-				},
-			},
-			valid: false,
-		},
 		// this line is used by starport scaffolding # types/genesis/testcase
-	}
-	for _, tc := range tests {
+	} {
 		t.Run(tc.desc, func(t *testing.T) {
 			err := tc.genState.Validate()
 			if tc.valid {

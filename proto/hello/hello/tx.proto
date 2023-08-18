@@ -1,37 +1,7 @@
 syntax = "proto3";
-
-package hello.hello;
-
-import "hello/hello/kv.proto";
+package murphyhub.hello.hello;
 
 option go_package = "github.com/Murphy-hub/hello/x/hello/types";
 
 // Msg defines the Msg service.
-service Msg {
-  rpc CreateKv (MsgCreateKv) returns (MsgCreateKvResponse);
-  rpc UpdateKv (MsgUpdateKv) returns (MsgUpdateKvResponse);
-  rpc DeleteKv (MsgDeleteKv) returns (MsgDeleteKvResponse);
-}
-message MsgCreateKv {
-  string creator = 1;
-  string index   = 2;
-  string value   = 3;
-}
-
-message MsgCreateKvResponse {}
-
-message MsgUpdateKv {
-  string creator = 1;
-  string index   = 2;
-  string value   = 3;
-}
-
-message MsgUpdateKvResponse {}
-
-message MsgDeleteKv {
-  string creator = 1;
-  string index   = 2;
-}
-
-message MsgDeleteKvResponse {}
-
+service Msg {}
