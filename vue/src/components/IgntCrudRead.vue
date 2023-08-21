@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div v-if="items" class="max-w-xl">
+    <div v-if="!loggedIn">Please connect your wallet first</div>
+    <div v-else-if="items" class="max-w-xl">
       <div
         v-for="item in items"
         :key="item.id"
@@ -65,7 +66,7 @@ import { useClient } from "@/composables/useClient";
 import { IgntFileIcon } from "@ignt/vue-library";
 import { IgntDotsIcon } from "@ignt/vue-library";
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import { useAddress } from "@/def-composables/useAddress";
 
 const props = defineProps({
@@ -123,12 +124,18 @@ const fetch = async () => {
           | "useKeplr"
         >
       ] as any
-    ).query[props.commandName]()
+    ).query[props.commandName]({ creator: address.value })
   ).data[props.itemName.toLowerCase()];
 };
 const refetch = async () => {
+  // If not logged in, skip fetch
+  if (!address.value) return;
+
   items.value = await fetch();
 };
 defineExpose({ refetch });
 await refetch();
+
+// If account logged in, fetch items
+watch(() => address.value, refetch);
 </script>
