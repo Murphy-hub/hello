@@ -1,6 +1,6 @@
 <template>
   <div>
-    <IgntCrud store-name="HelloHello" item-name="Kv" />
+    <IgntCrud store-name="MurphyhubHelloHello" item-name="Kv" />
   </div>
 </template>
 <script setup lang="ts">

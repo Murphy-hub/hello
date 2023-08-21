@@ -8,6 +8,8 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+vue/node_modules
+ts-client/node_modules
 .DS_Store
 dist
 dist-ssr
