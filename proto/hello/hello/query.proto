@@ -41,6 +41,7 @@ message QueryParamsResponse {
 
 message QueryGetKvRequest {
   string index = 1;
+  string creator = 2;
 }
 
 message QueryGetKvResponse {
@@ -49,6 +50,7 @@ message QueryGetKvResponse {
 
 message QueryAllKvRequest {
   cosmos.base.query.v1beta1.PageRequest pagination = 1;
+  string creator = 2;
 }
 
 message QueryAllKvResponse {
